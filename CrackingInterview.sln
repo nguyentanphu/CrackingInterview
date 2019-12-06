@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FibWithMemo", "CrackingInterview\FibWithMemo.csproj", "{38FBC0D1-BEB8-43C7-A784-49B0D79D0793}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDifferencePair", "KDifferencePair\KDifferencePair.csproj", "{C4CE4262-86F1-4405-8D60-D7642FC70352}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{38FBC0D1-BEB8-43C7-A784-49B0D79D0793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FBC0D1-BEB8-43C7-A784-49B0D79D0793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FBC0D1-BEB8-43C7-A784-49B0D79D0793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CE4262-86F1-4405-8D60-D7642FC70352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CE4262-86F1-4405-8D60-D7642FC70352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CE4262-86F1-4405-8D60-D7642FC70352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CE4262-86F1-4405-8D60-D7642FC70352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
