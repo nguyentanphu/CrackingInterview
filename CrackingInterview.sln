@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FibWithMemo", "CrackingInte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KDifferencePair", "KDifferencePair\KDifferencePair.csproj", "{C4CE4262-86F1-4405-8D60-D7642FC70352}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter1_2", "Chapter1_2\Chapter1_2.csproj", "{543791A3-BA4E-40D9-A864-5818490A20EF}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A^3+B^3=C^3+D^3", "A^3+B^3=C^3+D^3\A^3+B^3=C^3+D^3.csproj", "{86417021-4D75-46FD-874F-74C91365A6C4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringPermutation", "StringPermutation\StringPermutation.csproj", "{CA7F3B76-A86B-4FE6-B394-A8DA26F58CFF}"
