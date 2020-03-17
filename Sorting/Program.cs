@@ -10,9 +10,57 @@ namespace Sorting
 		{
 			var inputArr = new int[] {1,30,4,5,6,7,59,39,35,100};
 
-			var sorted = MergeSort(inputArr);
-			Print(sorted);
+			QuickSort(inputArr, 0, inputArr.Length-1);
+			Print(inputArr);
 
+		}
+
+		public static void QuickSort(int[] arr, int left, int right)
+		{
+			if (left < right)
+			{
+				int pivotIndex = Partition(arr, left, right);
+				if (pivotIndex > 1)
+				{
+					QuickSort(arr, left, pivotIndex-1);
+				}
+
+				if (pivotIndex + 1 < right)
+				{
+					QuickSort(arr, pivotIndex + 1, right);
+				}
+			}
+		}
+
+		public static int Partition(int[] arr, int left, int right)
+		{
+			var pivot = arr[left];
+			while (true)
+			{
+				while (pivot > arr[left])
+				{
+					left++;
+				}
+
+				while (pivot < arr[right])
+				{
+					right--;
+				}
+
+				if (left < right)
+				{
+					if (arr[left] == arr[right])
+					{
+						return right;
+					}
+
+					Swap(arr, left, right);
+				}
+				else
+				{
+					return right;
+				}
+			}
 		}
 
 		public static int[] MergeSort(int[] arr)

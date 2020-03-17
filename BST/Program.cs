@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BST
 {
@@ -7,18 +8,14 @@ namespace BST
 		static void Main(string[] args)
 		{
 			var bst = new BinarySearchTree();
-			bst.Insert(58);
-			bst.Insert(44);
-			bst.Insert(16);
-			bst.Insert(54);
-			bst.Insert(46);
-			bst.Insert(57);
-			bst.Insert(47);
-			bst.Insert(55);
-			bst.Insert(56);
-			bst.Insert(47);
-
-			bst.Remove(54);
+			bst.Insert(9);
+			bst.Insert(4);
+			bst.Insert(20);
+			bst.Insert(1);
+			bst.Insert(6);
+			bst.Insert(15);
+			bst.Insert(150);
+			var result = bst.BreathFirstSearchR();
 		}
 	}
 
@@ -138,6 +135,52 @@ namespace BST
 				ReplaceNode(parentNode, targetNode, smallestSuccessor.target);
 			}
 
+		}
+
+		public int[] BreathFirstSearch()
+		{
+			var result = new List<int>();
+			var queue = new Queue<BinarySearchTreeNode>();
+			queue.Enqueue(Root);
+
+			while (queue.Count > 0)
+			{
+				var currentNode = queue.Dequeue();
+				result.Add(currentNode.Value);
+				if (currentNode.LeftNode != null)
+				{
+					queue.Enqueue(currentNode.LeftNode);
+				}
+
+				if (currentNode.RightNode != null)
+				{
+					queue.Enqueue(currentNode.RightNode);
+				}
+			}
+
+			return result.ToArray();
+		}
+
+		public int[] BreathFirstSearchR()
+		{
+			var result = new List<int>();
+			BreathFirstSearchRP(Root, result);
+			return result.ToArray();
+		}
+
+		private void BreathFirstSearchRP(BinarySearchTreeNode node, List<int> result)
+		{
+			result.Add(node.Value);
+
+			if (node.LeftNode != null)
+			{
+				BreathFirstSearchRP(node.LeftNode, result);
+			}
+
+			if (node.RightNode != null)
+			{
+				BreathFirstSearchRP(node.RightNode, result);
+			}
 		}
 
 		private void ReplaceNode(BinarySearchTreeNode parentNode, BinarySearchTreeNode targetNode, BinarySearchTreeNode newNode)
