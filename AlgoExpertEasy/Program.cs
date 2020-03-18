@@ -47,20 +47,27 @@ namespace AlgoExpertEasy
 			var result = new int[3];
 			foreach (var num in arr)
 			{
-				for (int j = 0; j < result.Length; j++)
+				for (int j = result.Length-1; j >= 0; j--)
 				{
-					if (result[j] == default)
+					if (num > result[j])
 					{
-						result[j] = num;
+						ShiftLeft(result, j, num);
 						break;
-					} else if (j < 2 && arr[j + 1] == default)
-					{
-						continue;
 					}
 				}
 			}
 
 			return result;
+		}
+
+		private static void ShiftLeft(int[] arr, int index, int newValue)
+		{
+			var temp = arr[index];
+			arr[index] = newValue;
+			if (index > 0)
+			{
+				arr[index - 1] = temp;
+			}
 		}
 	}
 }
