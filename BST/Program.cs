@@ -8,14 +8,17 @@ namespace BST
 		static void Main(string[] args)
 		{
 			var bst = new BinarySearchTree();
-			bst.Insert(9);
-			bst.Insert(4);
-			bst.Insert(20);
-			bst.Insert(1);
+			bst.Insert(10);
+			bst.Insert(5);
+			bst.Insert(2);
 			bst.Insert(6);
+			bst.Insert(1);
 			bst.Insert(15);
-			bst.Insert(150);
-			var result = bst.BreathFirstSearchR();
+			bst.Insert(13);
+			bst.Insert(22);
+			bst.Insert(14);
+
+			var result = bst.DepthFirstSearch();
 		}
 	}
 
@@ -80,6 +83,36 @@ namespace BST
 
 			return null;
 		}
+
+		public BinarySearchTreeNode ClosestValue(int target)
+		{
+
+			var currentNode = Root;
+			var closest = (node: currentNode, value: Math.Abs(target - currentNode.Value));
+			while (currentNode != null)
+			{
+				if (closest.value > Math.Abs(target - currentNode.Value))
+				{
+					closest = (node: currentNode, value: Math.Abs(target - currentNode.Value));
+				}
+
+				if (target > currentNode.Value)
+				{
+					currentNode = currentNode.RightNode;
+				}
+				else if (target < currentNode.Value)
+				{
+					currentNode = currentNode.LeftNode;
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			return closest.node;
+		}
+
 
 		public (BinarySearchTreeNode node, BinarySearchTreeNode parent) LookupWithParent(int value)
 		{
@@ -161,25 +194,23 @@ namespace BST
 			return result.ToArray();
 		}
 
-		public int[] BreathFirstSearchR()
+		public int[] DepthFirstSearch()
 		{
 			var result = new List<int>();
-			BreathFirstSearchRP(Root, result);
+			DepthFirstSearchR(Root, result);
 			return result.ToArray();
 		}
 
-		private void BreathFirstSearchRP(BinarySearchTreeNode node, List<int> result)
+		private void DepthFirstSearchR(BinarySearchTreeNode node, List<int> result)
 		{
 			result.Add(node.Value);
-
 			if (node.LeftNode != null)
 			{
-				BreathFirstSearchRP(node.LeftNode, result);
+				DepthFirstSearchR(node.LeftNode, result);
 			}
-
 			if (node.RightNode != null)
 			{
-				BreathFirstSearchRP(node.RightNode, result);
+				DepthFirstSearchR(node.RightNode, result);
 			}
 		}
 
