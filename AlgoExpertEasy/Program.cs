@@ -31,8 +31,13 @@ namespace AlgoExpertEasy
 
 			//Console.WriteLine(CeasarCipher("abcxyz", 27));
 
-			var arr = new int[] { -8, -6, 1, 2, 3, 5, 6, 12 };
-			var result = ThreeNumSumSort(arr, 0);
+			//var arr = new int[] { -8, -6, 1, 2, 3, 5, 6, 12 };
+			//var result = ThreeNumSumSort(arr, 0);
+
+			var arr1 = new int[] {-1, 5, 10, 20, 28, 3};
+			var arr2 = new int[] {26, 134, 135, 15, 17};
+
+			var result = SmallestDiffWithSort(arr1, arr2);
 		}
 
 		static (int, int)? FindSum(int[] arr, int sum)
@@ -168,6 +173,75 @@ namespace AlgoExpertEasy
 			}
 
 			return new string(result);
+		}
+
+		static (int, int) SmallestDiff(int[] arr1, int[] arr2)
+		{
+			//var sortedArr1 = arr1.OrderBy(i => i);
+			//var sortedArr2 = arr2.OrderBy(i => i);
+
+			var smallestDiff = int.MaxValue;
+			var smallestPair = default((int, int));
+			foreach (var i in arr1)
+			{
+				foreach (var j in arr2)
+				{
+					var diff = Math.Abs(i - j);
+					if (smallestDiff > diff)
+					{
+						smallestDiff = diff;
+						smallestPair = (i, j);
+					}
+				}
+			}
+
+			return smallestPair;
+		}
+
+		static (int, int) SmallestDiffWithSort(int[] arr1, int[] arr2)
+		{
+			var sortedArr1 = arr1.OrderBy(i => i).ToArray();
+			var sortedArr2 = arr2.OrderBy(i => i).ToArray();
+
+			//var greaterLength = sortedArr1.Length > sortedArr2.Length 
+			//	? sortedArr1.Length : sortedArr2.Length;
+
+			var arr1Index = 0;
+			var arr2Index = 0;
+
+			var smallestDiff = int.MaxValue;
+			var result = default((int, int));
+			while (true)
+			{
+				if (arr1Index == sortedArr1.Length || arr2Index == sortedArr2.Length)
+				{
+					break;
+				}
+
+				var firstNum = arr1[arr1Index];
+				var secondNum = arr2[arr2Index];
+				if (firstNum == secondNum)
+				{
+					return (firstNum, secondNum);
+				}
+				else if (firstNum > secondNum)
+				{
+					arr2Index++;
+				}
+				else
+				{
+					arr1Index++;
+				}
+
+				var diff = Math.Abs(firstNum - secondNum);
+				if (smallestDiff > diff)
+				{
+					smallestDiff = diff;
+					result = (firstNum, secondNum);
+				}
+			}
+
+			return result;
 		}
 	}
 }
